@@ -28,3 +28,13 @@ export const customPost = async (url, data = {}) => {
     throw error;
   }
 };
+
+export const customDelete = async (url, data = {}) => {
+  try {
+    const response = await customAxios.post(url, data);
+    return response.data;
+  } catch (error) {
+    console.error("Delete request error:", error);
+    throw error;
+  }
+};
