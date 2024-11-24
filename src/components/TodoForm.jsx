@@ -24,7 +24,7 @@ const TodoForm = ({ addTodo }) => {
                     className="todo-input"
                     onChange={(e) => setValue(e.target.value)}
                     value={value}
-                    placeholder="Add your todo"
+                    placeholder="Create a new taks"
                 />
                 <button className="todo-btn" type="submit">Add</button>
             </div>
