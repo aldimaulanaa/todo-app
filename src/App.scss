@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700&display=swap');
 
 * {
   margin: 0;
@@ -7,82 +7,134 @@
   font-family: "Public Sans", sans-serif;
 }
 
+body {
+  background-color: #f4f4f9; 
+  color: #333; 
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 15px; 
+}
+
 .App {
   display: flex;
   justify-content: center;
-  margin: 50px 0;
+  align-items: center;
+  width: 100%;
+  max-width: 500px; 
 }
 
 .todo {
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px; 
-  width: 100%;
-  max-width: 350px;
-}
-
-.TodoForm {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   width: 100%;
 }
 
-.todo-input,
-.todo-input-edit {
+.todo-form {
+  width: 100%;
+  text-align: center; 
+  margin-bottom: 20px; 
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px; 
+  color: #333;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #555;
+  margin-bottom: 20px; 
+}
+
+.input-container {
+  display: flex; 
+  gap: 10px; 
+  width: 100%;
+}
+
+.todo-input {
+  flex: 1; 
   outline: none;
-  border-radius: 5px;
-  border: 2px solid #333;
+  border-radius: 8px;
+  border: 1px solid #ccc;
   padding: 12px;
   font-size: 1rem;
-  width: 100%;
+  background-color: #fff;
+  color: #333;
+  transition: border 0.3s, box-shadow 0.2s;
+}
+
+.todo-input:focus {
+  border: 1px solid #6c63ff; 
+  box-shadow: 0 0 4px rgba(108, 99, 255, 0.5);
 }
 
 .todo-btn {
-  border: 2px solid #333;
+  border: none;
   font-weight: 600;
-  padding: 12px 15px;
-  border-radius: 5px;
-  background-color: rgb(182, 255, 74);
+  padding: 12px 20px;
+  border-radius: 8px;
+  background-color: #6c63ff;
+  color: #fff;
   cursor: pointer;
   font-size: 1rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-  width: 100%;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .todo-btn:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: #534dbb; 
+  transform: scale(1.05); 
+}
+
+.todo-btn:active {
+  transform: scale(0.98); 
 }
 
 .todo-item {
   padding: 12px;
   margin: 10px 0;
   width: 100%;
-  max-width: 300px;
-  border: 2px solid #333;
-  background-color: rgb(173, 143, 255);
-  border-radius: 5px;
+  max-width: 380px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.todo-item:hover {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 .todo-item p {
   margin: 0;
   padding: 0;
   font-size: 1rem;
-  cursor: pointer;
-  transition: color 0.2s;
+  color: #333;
 }
 
 .todo-item p.completed {
   text-decoration: line-through;
-  color: grey;
+  color: #999;
 }
 
 .icons {
@@ -94,16 +146,17 @@
 .delete-icon {
   cursor: pointer;
   padding: 8px;
-  border-radius: 5px;
-  background-color: rgb(100, 153, 255);
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 50%;
+  background-color: #eaeaea;
+  color: #333;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .edit-icon:hover,
 .delete-icon:hover {
+  background-color: #6c63ff;
+  color: #fff;
   transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .edit-icon:active,
@@ -111,50 +164,23 @@
   transform: scale(0.9);
 }
 
-.todo-lists {
-  display: flex;
-  flex-direction: column-reverse;
-  width: 100%;
-}
-
-.completed {
-  text-decoration: line-through;
-  color: grey;
-  position: relative;
-}
-
-.completed::after {
-  content: "X";
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-size: 0.8rem;
-  color: red;
-  font-weight: bold;
-}
-
 @media (max-width: 600px) {
   .todo-item {
-    width: 100%;
-    margin: 5px 0;
-    padding: 8px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .todo-input,
-  .todo-input-edit {
-    width: 100%;
+  .todo-input {
+    font-size: 0.9rem;
   }
 
   .todo-btn {
-    width: 100%;
+    font-size: 0.9rem;
   }
 
-  .todo-lists {
+  .input-container {
     flex-direction: column;
-    align-items: center;
-  }
-
-  .App {
-    margin: 20px 0;
+    gap: 8px;
   }
 }
